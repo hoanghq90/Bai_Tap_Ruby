@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails'
+gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'puma'
 gem 'sass-rails'
@@ -12,7 +13,7 @@ group :development, :test do
 gem 'sqlite3'
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
-group :development do 
+group :development do
 gem 'web-console'
 gem 'listen'
 gem 'spring'
@@ -28,7 +29,7 @@ gem 'minitest-reporters'
 gem 'guard'
 gem 'guard-minitest'
 end
-group :production do 
+group :production do
 gem 'pg'
 end
 
