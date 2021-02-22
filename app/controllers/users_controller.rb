@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    if current_user.nil?
+      redirect_to index_url
+    end
+    unless @user.present?
+      flash[:success] = "User doesn't exist"
+      redirect_to root_url
+    end
   end
 
   def new
@@ -24,4 +31,9 @@ class UsersController < ApplicationController
    params.require(:user).permit(:name, :email, :password, :password_confirmation)
  end
 
+
+ def correct_user
+   @user = User.find(params[:id])
+   redirect_to(root_url) unless current_user?(@user)
+ end
 end
